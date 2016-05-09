@@ -3,25 +3,26 @@ package org.gochev.domain;
 import java.util.HashSet;
 import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.OneToMany;
 
 @Entity
-public class User extends AbstractEntity{
-	
+public class User extends AbstractEntity {
+
 	private String email;
-	
+
 	private String fullName;
-	
-	@OneToMany(mappedBy="user")
+
+	@OneToMany(mappedBy = "user", cascade = CascadeType.REMOVE)
 	private Set<Comment> comments = new HashSet<Comment>();
 
-	@OneToMany(mappedBy="user")
+	@OneToMany(mappedBy = "user", cascade = CascadeType.REMOVE)
 	private Set<Rating> ratings = new HashSet<Rating>();
-	
-	@OneToMany(mappedBy="user")
+
+	@OneToMany(mappedBy = "user", cascade = CascadeType.REMOVE)
 	private Set<Build> builds = new HashSet<Build>();
-	
+
 	public String getEmail() {
 		return email;
 	}
