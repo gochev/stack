@@ -8,9 +8,15 @@ import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
+import org.hibernate.validator.constraints.NotEmpty;
+
 @Entity
 public class Build extends AbstractEntity {
+	
+	@NotEmpty
 	private String name;
+	
+	@NotEmpty
 	private String content;
 
 	@OneToMany(mappedBy = "build", cascade = CascadeType.REMOVE)
