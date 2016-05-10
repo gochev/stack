@@ -11,6 +11,7 @@
 	<h1>Create Build</h1>
 
 	<form:form modelAttribute="build" method="post" action="/build/create">
+		<form:hidden path="id"/>
 		<fieldset>
 			<dl>
 				<dt>

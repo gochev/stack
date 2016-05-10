@@ -34,4 +34,9 @@ public class BuildServiceImpl implements BuildService {
 	public Build create(Build build){
 		return buildRepository.save(build);
 	}
+	
+	@Override
+	public Build get(Long id){
+		return buildRepository.findOne(id);
+	}
 }

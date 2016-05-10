@@ -12,4 +12,6 @@ public interface BuildService {
 
 	Build create(Build build);
 
+	Build get(Long id);
+
 }

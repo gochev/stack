@@ -13,6 +13,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.util.StringUtils;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -54,5 +55,26 @@ public class BuildController {
 		}
 		buildService.create(build);
 		return "build/done";
+	}
+	
+	@RequestMapping(value="/detail/{buildId}", method = RequestMethod.GET)
+	public String detail(@PathVariable String buildId, Model model){
+		
+		populateModel(buildId, model);
+		
+		return "build/detail";
+	}
+
+	@RequestMapping(value="/edit/{buildId}", method = RequestMethod.GET)
+	public String edit(@PathVariable String buildId, Model model){
+		
+		populateModel(buildId, model);
+		
+		return "build/create";
+	}
+	
+	private void populateModel(String buildId, Model model) {
+		Build build = buildService.get(Long.parseLong(buildId));
+		model.addAttribute("build", build);
 	}
 }
